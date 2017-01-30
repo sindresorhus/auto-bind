@@ -40,6 +40,19 @@ message();
 ```
 
 
+## API
+
+### autoBind(self)
+
+Bind methods in `self` to their class instance. Returns the `self` object.
+
+#### self
+
+Type: `Object`
+
+Object with methods to bind.
+
+
 ## Related
 
 - [bind-methods](https://github.com/sindresorhus/bind-methods) - Bind all methods in an object to itself or a specified context

@@ -7,4 +7,6 @@ module.exports = self => {
 			self[key] = val.bind(self);
 		}
 	}
+
+	return self;
 };

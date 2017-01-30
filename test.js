@@ -2,10 +2,12 @@ import test from 'ava';
 import m from './';
 
 test(t => {
+	let bounded;
+
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			m(this);
+			bounded = m(this);
 		}
 		message() {
 			return `${this.name} is awesome!`;
@@ -13,7 +15,8 @@ test(t => {
 	}
 
 	const unicorn = new Unicorn('Rainbow');
-	const message = unicorn.message;
+	t.is(bounded, unicorn);
 
+	const message = unicorn.message;
 	t.is(message(), 'Rainbow is awesome!');
 });

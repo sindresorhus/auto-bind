@@ -44,7 +44,7 @@ message();
 
 ### autoBind(self)
 
-Bind methods in `self` to their class instance and returns the `self` object.
+Bind methods in `self` to their class instance. Returns the `self` object.
 
 #### self
 

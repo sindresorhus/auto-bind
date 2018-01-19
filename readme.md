@@ -43,7 +43,7 @@ message();
 
 ## API
 
-### autoBind(self)
+### autoBind(self, [options])
 
 Bind methods in `self` to their class instance. Returns the `self` object.
 
@@ -52,6 +52,22 @@ Bind methods in `self` to their class instance. Returns the `self` object.
 Type: `Object`
 
 Object with methods to bind.
+
+#### options
+
+Type: `Object`
+
+##### include
+
+Type: `Array<string|RegExp>`
+
+Bind only the given methods.
+
+##### exclude
+
+Type: `Array<string|RegExp>`
+
+Bind methods except for the given methods.
 
 
 ## Related

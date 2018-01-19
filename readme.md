@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save auto-bind
+$ npm install auto-bind
 ```
 
 
@@ -20,6 +20,7 @@ class Unicorn {
 		this.name = name;
 		autoBind(this);
 	}
+
 	message() {
 		return `${this.name} is awesome!`;
 	}

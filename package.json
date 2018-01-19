@@ -29,7 +29,9 @@
 		"instance",
 		"function",
 		"this",
-		"self"
+		"self",
+		"react",
+		"component"
 	],
 	"devDependencies": {
 		"ava": "*",

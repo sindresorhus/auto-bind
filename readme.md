@@ -69,6 +69,21 @@ Type: `Array<string|RegExp>`
 
 Bind methods except for the given methods.
 
+### autoBind.react(self, [options])
+
+Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
+
+```js
+class Foo extends React.Component {
+	constructor(props) {
+		super(props);
+		autoBind.react(this);
+	}
+
+	// …
+}
+```
+
 
 ## Related
 

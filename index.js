@@ -26,3 +26,23 @@ module.exports = (self, options) => {
 
 	return self;
 };
+
+const excludedReactMethods = [
+	'componentWillMount',
+	'render',
+	'componentDidMount',
+	'componentWillReceiveProps',
+	'shouldComponentUpdate',
+	'componentWillUpdate',
+	'componentDidUpdate',
+	'componentWillUnmount',
+	'componentDidCatch',
+	'setState',
+	'forceUpdate'
+];
+
+module.exports.react = (self, options) => {
+	options = Object.assign({}, options);
+	options.exclude = (options.exclude || []).concat(excludedReactMethods);
+	return module.exports(self, options);
+};

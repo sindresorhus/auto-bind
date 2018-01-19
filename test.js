@@ -1,7 +1,7 @@
 import test from 'ava';
 import m from '.';
 
-test('main', t => {
+test('autoBind()', t => {
 	let bounded;
 
 	class Unicorn {
@@ -74,5 +74,32 @@ test('exclude option', t => {
 	t.throws(() => {
 		bar();
 	});
+});
+
+test('autoBind.react()', t => {
+	class Unicorn {
+		constructor(name) {
+			this.name = name;
+			m.react(this);
+		}
+
+		componentWillMount() {
+			return this.name;
+		}
+
+		foo() {
+			return this.name;
+		}
+	}
+
+	const unicorn = new Unicorn('Rainbow');
+	const componentWillMount = unicorn.componentWillMount;
+	const foo = unicorn.foo;
+
+	t.throws(() => {
+		componentWillMount();
+	});
+
+	t.is(foo(), 'Rainbow');
 });
 

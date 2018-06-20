@@ -18,7 +18,7 @@ test('autoBind()', t => {
 	const unicorn = new Unicorn('Rainbow');
 	t.is(bounded, unicorn);
 
-	const message = unicorn.message;
+	const {message} = unicorn;
 	t.is(message(), 'Rainbow is awesome!');
 });
 
@@ -38,9 +38,7 @@ test('include option', t => {
 		}
 	}
 
-	const unicorn = new Unicorn('Rainbow');
-	const foo = unicorn.foo;
-	const bar = unicorn.bar;
+	const {foo, bar} = new Unicorn('Rainbow');
 
 	t.throws(() => {
 		foo();
@@ -65,9 +63,7 @@ test('exclude option', t => {
 		}
 	}
 
-	const unicorn = new Unicorn('Rainbow');
-	const foo = unicorn.foo;
-	const bar = unicorn.bar;
+	const {foo, bar} = new Unicorn('Rainbow');
 
 	t.is(foo(), 'Rainbow');
 
@@ -92,9 +88,7 @@ test('autoBind.react()', t => {
 		}
 	}
 
-	const unicorn = new Unicorn('Rainbow');
-	const componentWillMount = unicorn.componentWillMount;
-	const foo = unicorn.foo;
+	const {foo, componentWillMount} = new Unicorn('Rainbow');
 
 	t.throws(() => {
 		componentWillMount();

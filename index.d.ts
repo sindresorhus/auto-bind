@@ -4,12 +4,12 @@ declare module "auto-bind" {
 		exclude?: Array<string | RegExp>;
 	}
 
-	type AutoBindFunction<selfT = Object> = (
+	type AutoBindFunction<selfT = object> = (
 		self: selfT,
 		options?: AutoBindOptions
 	) => selfT;
 
-	interface AutoBind<selfT = Object> extends AutoBindFunction<selfT> {
+	interface AutoBind<selfT = object> extends AutoBindFunction<selfT> {
 		react: AutoBindFunction<selfT>;
 	}
 

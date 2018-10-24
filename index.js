@@ -16,7 +16,8 @@ module.exports = (self, options) => {
 		return true;
 	};
 
-	for (const key of Object.getOwnPropertyNames(self.constructor.prototype)) {
+	const proto = self.constructor.prototype;
+	for (const key of Object.getOwnPropertyNames(proto).concat(Object.getOwnPropertySymbols(proto))) {
 		const value = self[key];
 
 		if (key !== 'constructor' && typeof value === 'function' && filter(key)) {

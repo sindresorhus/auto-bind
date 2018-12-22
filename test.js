@@ -13,6 +13,10 @@ test('autoBind()', t => {
 		message() {
 			return `${this.name} is awesome!`;
 		}
+
+		get bad() {
+			throw new Error('This getter somehow throws an error!');
+		}
 	}
 
 	const unicorn = new Unicorn('Rainbow');

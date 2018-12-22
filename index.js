@@ -18,10 +18,11 @@ module.exports = (self, options) => {
 
 	const proto = self.constructor.prototype;
 	for (const key of Object.getOwnPropertyNames(proto).concat(Object.getOwnPropertySymbols(proto))) {
-		const value = self[key];
-
-		if (key !== 'constructor' && typeof value === 'function' && filter(key)) {
-			self[key] = value.bind(self);
+		if (key !== 'constructor' && filter(key)) {
+			const desc = Object.getOwnPropertyDescriptor(self.constructor.prototype, key);
+			if (Boolean(desc) && typeof desc.value === 'function') {
+				self[key] = self[key].bind(self);
+			}
 		}
 	}
 

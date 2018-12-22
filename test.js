@@ -101,3 +101,25 @@ test('autoBind.react()', t => {
 	t.is(foo(), 'Rainbow');
 });
 
+test('symbol properties', t => {
+	const messageSymbol = Symbol('message');
+
+	let bounded;
+
+	class Unicorn {
+		constructor(name) {
+			this.name = name;
+			bounded = m(this);
+		}
+
+		[messageSymbol]() {
+			return `${this.name} is awesome!`;
+		}
+	}
+
+	const unicorn = new Unicorn('Rainbow');
+	t.is(bounded, unicorn);
+
+	const message = unicorn[messageSymbol];
+	t.is(message(), 'Rainbow is awesome!');
+});

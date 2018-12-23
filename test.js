@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from '.';
+import autoBind from '.';
 
 test('autoBind()', t => {
 	let bounded;
@@ -7,7 +7,7 @@ test('autoBind()', t => {
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			bounded = m(this);
+			bounded = autoBind(this);
 		}
 
 		message() {
@@ -30,7 +30,7 @@ test('include option', t => {
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			m(this, {include: ['bar']});
+			autoBind(this, {include: ['bar']});
 		}
 
 		foo() {
@@ -55,7 +55,7 @@ test('exclude option', t => {
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			m(this, {exclude: ['bar']});
+			autoBind(this, {exclude: ['bar']});
 		}
 
 		foo() {
@@ -80,7 +80,7 @@ test('autoBind.react()', t => {
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			m.react(this);
+			autoBind.react(this);
 		}
 
 		componentWillMount() {
@@ -109,7 +109,7 @@ test('symbol properties', t => {
 	class Unicorn {
 		constructor(name) {
 			this.name = name;
-			bounded = m(this);
+			bounded = autoBind(this);
 		}
 
 		[messageSymbol]() {

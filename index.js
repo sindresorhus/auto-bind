@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (self, options) => {
 	options = Object.assign({}, options);
 
@@ -17,10 +18,10 @@ module.exports = (self, options) => {
 	};
 
 	const proto = self.constructor.prototype;
-	for (const key of Object.getOwnPropertyNames(proto).concat(Object.getOwnPropertySymbols(proto))) {
+	for (const key of Reflect.ownKeys(proto)) {
 		if (key !== 'constructor' && filter(key)) {
-			const desc = Object.getOwnPropertyDescriptor(self.constructor.prototype, key);
-			if (Boolean(desc) && typeof desc.value === 'function') {
+			const descriptor = Object.getOwnPropertyDescriptor(proto, key);
+			if (descriptor && typeof descriptor.value === 'function') {
 				self[key] = self[key].bind(self);
 			}
 		}

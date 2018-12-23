@@ -1,5 +1,18 @@
 'use strict';
 
+// Gets all non-builtin properties up the prototype chain
+const getAllProperties = object => {
+	const props = new Set();
+
+	do {
+		for (const key of Reflect.ownKeys(object)) {
+			props.add([object, key]);
+		}
+	} while ((object = Reflect.getPrototypeOf(object)) && object !== Object.prototype);
+
+	return props;
+};
+
 module.exports = (self, options) => {
 	options = Object.assign({}, options);
 
@@ -17,13 +30,14 @@ module.exports = (self, options) => {
 		return true;
 	};
 
-	const proto = self.constructor.prototype;
-	for (const key of Reflect.ownKeys(proto)) {
-		if (key !== 'constructor' && filter(key)) {
-			const descriptor = Object.getOwnPropertyDescriptor(proto, key);
-			if (descriptor && typeof descriptor.value === 'function') {
-				self[key] = self[key].bind(self);
-			}
+	for (const [object, key] of getAllProperties(self.constructor.prototype)) {
+		if (key === 'constructor' || !filter(key)) {
+			continue;
+		}
+
+		const descriptor = Reflect.getOwnPropertyDescriptor(object, key);
+		if (descriptor && typeof descriptor.value === 'function') {
+			self[key] = self[key].bind(self);
 		}
 	}
 

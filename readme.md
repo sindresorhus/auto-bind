@@ -2,6 +2,8 @@
 
 > Automatically bind methods to their class instance
 
+It also correctly binds inherited properties.
+
 
 ## Install
 

@@ -123,3 +123,31 @@ test('symbol properties', t => {
 	const message = unicorn[messageSymbol];
 	t.is(message(), 'Rainbow is awesome!');
 });
+
+test('binds inherited properties', t => {
+	class Base {
+		constructor(name) {
+			this.name = name;
+		}
+
+		message() {
+			return `${this.name} is awesome!`;
+		}
+	}
+
+	class Base2 extends Base {}
+
+	let bounded;
+	class Unicorn extends Base2 {
+		constructor(name) {
+			super(name);
+			bounded = autoBind(this);
+		}
+	}
+
+	const unicorn = new Unicorn('Rainbow');
+	t.is(bounded, unicorn);
+
+	const {message} = unicorn;
+	t.is(message(), 'Rainbow is awesome!');
+});

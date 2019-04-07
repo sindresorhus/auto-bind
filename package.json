@@ -1,6 +1,6 @@
 {
 	"name": "auto-bind",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "Automatically bind methods to their class instance",
 	"license": "MIT",
 	"repository": "sindresorhus/auto-bind",

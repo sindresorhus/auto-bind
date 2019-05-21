@@ -5,12 +5,12 @@ declare namespace autoBind {
 		/**
 		Bind only the given methods.
 		*/
-		readonly include?: Array<string | RegExp>;
+		readonly include?: ReadonlyArray<string | RegExp>;
 
 		/**
 		Bind methods except for the given methods.
 		*/
-		readonly exclude?: Array<string | RegExp>;
+		readonly exclude?: ReadonlyArray<string | RegExp>;
 	}
 }
 

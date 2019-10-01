@@ -49,7 +49,7 @@ declare const autoBind: {
 	//=> Error: Cannot read property 'name' of undefined
 	```
 	*/
-	<SelfType extends {[key: string]: unknown}>(
+	<SelfType extends {[key: string]: any}>(
 		self: SelfType,
 		options?: autoBind.Options
 	): SelfType;

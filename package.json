@@ -34,12 +34,18 @@
 		"react",
 		"component"
 	],
-	"dependencies": {
-		"@types/react": "^16.8.12"
-	},
 	"devDependencies": {
+		"@types/react": "^16.9.9",
 		"ava": "^2.4.0",
 		"tsd": "^0.9.0",
 		"xo": "^0.25.3"
+	},
+	"peerDependencies": {
+		"@types/react": ">=16.8.0"
+	},
+	"peerDependenciesMeta": {
+		"@types/react": {
+			"optional": true
+		}
 	}
 }

@@ -18,8 +18,8 @@ class Bar extends ReactComponent {
 	constructor(props: object) {
 		super(props);
 
-		expectType<Bar>(autoBind.react(this));
-		expectType<Bar>(autoBind.react(this, {include: ['foo', /bar/]}));
-		expectType<Bar>(autoBind.react(this, {exclude: ['foo', /bar/]}));
+		expectType<this>(autoBind.react(this));
+		expectType<this>(autoBind.react(this, {include: ['foo', /bar/]}));
+		expectType<this>(autoBind.react(this, {exclude: ['foo', /bar/]}));
 	}
 }

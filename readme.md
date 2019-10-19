@@ -45,33 +45,33 @@ message();
 
 ## API
 
-### autoBind(self, [options])
+### autoBind(self, options?)
 
 Bind methods in `self` to their class instance. Returns the `self` object.
 
 #### self
 
-Type: `Object`
+Type: `object`
 
 Object with methods to bind.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### include
 
-Type: `Array<string|RegExp>`
+Type: `Array<string | RegExp>`
 
 Bind only the given methods.
 
 ##### exclude
 
-Type: `Array<string|RegExp>`
+Type: `Array<string | RegExp>`
 
 Bind methods except for the given methods.
 
-### autoBind.react(self, [options])
+### autoBind.react(self, options?)
 
 Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
 
@@ -90,8 +90,3 @@ class Foo extends React.Component {
 ## Related
 
 - [bind-methods](https://github.com/sindresorhus/bind-methods) - Bind all methods in an object to itself or a specified context
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

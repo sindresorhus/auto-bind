@@ -2,29 +2,27 @@
 
 // Gets all non-builtin properties up the prototype chain
 const getAllProperties = object => {
-	const props = new Set();
+	const properties = new Set();
 
 	do {
 		for (const key of Reflect.ownKeys(object)) {
-			props.add([object, key]);
+			properties.add([object, key]);
 		}
 	} while ((object = Reflect.getPrototypeOf(object)) && object !== Object.prototype);
 
-	return props;
+	return properties;
 };
 
-module.exports = (self, options) => {
-	options = Object.assign({}, options);
-
+module.exports = (self, {include, exclude} = {}) => {
 	const filter = key => {
 		const match = pattern => typeof pattern === 'string' ? key === pattern : pattern.test(key);
 
-		if (options.include) {
-			return options.include.some(match);
+		if (include) {
+			return include.some(match);
 		}
 
-		if (options.exclude) {
-			return !options.exclude.some(match);
+		if (exclude) {
+			return !exclude.some(match);
 		}
 
 		return true;
@@ -62,8 +60,11 @@ const excludedReactMethods = [
 	'forceUpdate'
 ];
 
-module.exports.react = (self, options) => {
-	options = Object.assign({}, options);
-	options.exclude = (options.exclude || []).concat(excludedReactMethods);
+module.exports.react = (self, {exclude = [], ...options} = {}) => {
+	options.exclude = [
+		...exclude,
+		...excludedReactMethods
+	];
+
 	return module.exports(self, options);
 };

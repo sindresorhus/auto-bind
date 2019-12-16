@@ -1,5 +1,3 @@
-import * as react from 'react';
-
 declare namespace autoBind {
 	interface Options {
 		/**
@@ -14,69 +12,43 @@ declare namespace autoBind {
 	}
 }
 
-declare const autoBind: {
-	/**
-	Automatically bind methods to their class instance.
+/**
+Automatically bind methods to their class instance.
 
-	@param self - Object with methods to bind.
+@param self - Object with methods to bind.
 
-	@example
-	```
-	import autoBind = require('auto-bind');
+@example
+```
+import autoBind = require('auto-bind');
 
-	class Unicorn {
-		constructor(name) {
-			this.name = name;
-			autoBind(this);
-		}
-
-		message() {
-			return `${this.name} is awesome!`;
-		}
+class Unicorn {
+	constructor(name) {
+		this.name = name;
+		autoBind(this);
 	}
 
-	const unicorn = new Unicorn('Rainbow');
-
-	// Grab the method off the class instance
-	const message = unicorn.message;
-
-	// Still bound to the class instance
-	message();
-	//=> 'Rainbow is awesome!'
-
-	// Without `autoBind(this)`, the above would have resulted in
-	message();
-	//=> Error: Cannot read property 'name' of undefined
-	```
-	*/
-	<SelfType extends {[key: string]: any}>(
-		self: SelfType,
-		options?: autoBind.Options
-	): SelfType;
-
-	/**
-	Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
-
-	@param self - Object with methods to bind.
-
-	@example
-	```
-	import autoBind = require('auto-bind');
-
-	class Foo extends React.Component {
-		constructor(props) {
-			super(props);
-			autoBind.react(this);
-		}
-
-		// …
+	message() {
+		return `${this.name} is awesome!`;
 	}
-	```
-	*/
-	react<SelfType extends react.Component>(
-		self: SelfType,
-		options?: autoBind.Options
-	): SelfType;
-};
+}
+
+const unicorn = new Unicorn('Rainbow');
+
+// Grab the method off the class instance
+const message = unicorn.message;
+
+// Still bound to the class instance
+message();
+//=> 'Rainbow is awesome!'
+
+// Without `autoBind(this)`, the above would have resulted in
+message();
+//=> Error: Cannot read property 'name' of undefined
+```
+*/
+declare function autoBind<SelfType extends {[key: string]: any}>(
+	self: SelfType,
+	options?: autoBind.Options
+): SelfType;
 
 export = autoBind;

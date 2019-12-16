@@ -4,6 +4,7 @@
 	"description": "Automatically bind methods to their class instance",
 	"license": "MIT",
 	"repository": "sindresorhus/auto-bind",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
@@ -17,7 +18,9 @@
 	},
 	"files": [
 		"index.js",
-		"index.d.ts"
+		"index.d.ts",
+		"react.js",
+		"react.d.ts"
 	],
 	"keywords": [
 		"auto",
@@ -37,15 +40,7 @@
 	"devDependencies": {
 		"@types/react": "^16.9.9",
 		"ava": "^2.4.0",
-		"tsd": "^0.9.0",
+		"tsd": "^0.11.0",
 		"xo": "^0.25.3"
-	},
-	"peerDependencies": {
-		"@types/react": ">=16.8.0"
-	},
-	"peerDependenciesMeta": {
-		"@types/react": {
-			"optional": true
-		}
 	}
 }

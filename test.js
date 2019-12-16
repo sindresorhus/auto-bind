@@ -1,4 +1,5 @@
 import test from 'ava';
+import autoBindReact from './react';
 import autoBind from '.';
 
 test('autoBind()', t => {
@@ -76,31 +77,6 @@ test('exclude option', t => {
 	});
 });
 
-test('autoBind.react()', t => {
-	class Unicorn {
-		constructor(name) {
-			this.name = name;
-			autoBind.react(this);
-		}
-
-		componentWillMount() {
-			return this.name;
-		}
-
-		foo() {
-			return this.name;
-		}
-	}
-
-	const {foo, componentWillMount} = new Unicorn('Rainbow');
-
-	t.throws(() => {
-		componentWillMount();
-	});
-
-	t.is(foo(), 'Rainbow');
-});
-
 test('symbol properties', t => {
 	const messageSymbol = Symbol('message');
 
@@ -150,4 +126,29 @@ test('binds inherited properties', t => {
 
 	const {message} = unicorn;
 	t.is(message(), 'Rainbow is awesome!');
+});
+
+test('autoBindReact()', t => {
+	class Unicorn {
+		constructor(name) {
+			this.name = name;
+			autoBindReact(this);
+		}
+
+		componentWillMount() {
+			return this.name;
+		}
+
+		foo() {
+			return this.name;
+		}
+	}
+
+	const {foo, componentWillMount} = new Unicorn('Rainbow');
+
+	t.throws(() => {
+		componentWillMount();
+	});
+
+	t.is(foo(), 'Rainbow');
 });

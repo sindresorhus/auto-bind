@@ -4,13 +4,11 @@
 
 It also correctly binds inherited properties.
 
-
 ## Install
 
 ```
 $ npm install auto-bind
 ```
-
 
 ## Usage
 
@@ -42,12 +40,13 @@ message();
 //=> Error: Cannot read property 'name' of undefined
 ```
 
-
 ## API
 
 ### autoBind(self, options?)
 
-Bind methods in `self` to their class instance. Returns the `self` object.
+Bind methods in `self` to their class instance.
+
+Returns the `self` object.
 
 #### self
 
@@ -71,21 +70,22 @@ Type: `Array<string | RegExp>`
 
 Bind methods except for the given methods.
 
-### autoBind.react(self, options?)
+### React
 
 Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
 
 ```js
+const autoBindReact = require('auto-bind/react');
+
 class Foo extends React.Component {
 	constructor(props) {
 		super(props);
-		autoBind.react(this);
+		autoBindReact(this);
 	}
 
 	// …
 }
 ```
-
 
 ## Related
 

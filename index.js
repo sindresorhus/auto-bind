@@ -41,30 +41,3 @@ module.exports = (self, {include, exclude} = {}) => {
 
 	return self;
 };
-
-const excludedReactMethods = [
-	'componentWillMount',
-	'UNSAFE_componentWillMount',
-	'render',
-	'getSnapshotBeforeUpdate',
-	'componentDidMount',
-	'componentWillReceiveProps',
-	'UNSAFE_componentWillReceiveProps',
-	'shouldComponentUpdate',
-	'componentWillUpdate',
-	'UNSAFE_componentWillUpdate',
-	'componentDidUpdate',
-	'componentWillUnmount',
-	'componentDidCatch',
-	'setState',
-	'forceUpdate'
-];
-
-module.exports.react = (self, {exclude = [], ...options} = {}) => {
-	options.exclude = [
-		...exclude,
-		...excludedReactMethods
-	];
-
-	return module.exports(self, options);
-};

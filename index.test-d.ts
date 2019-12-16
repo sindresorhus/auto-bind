@@ -1,5 +1,6 @@
 import {expectType} from 'tsd';
 import {Component as ReactComponent} from 'react';
+import autoBindReact = require('./react');
 import autoBind = require('.');
 
 const foo = {
@@ -18,8 +19,8 @@ class Bar extends ReactComponent {
 	constructor(props: object) {
 		super(props);
 
-		expectType<this>(autoBind.react(this));
-		expectType<this>(autoBind.react(this, {include: ['foo', /bar/]}));
-		expectType<this>(autoBind.react(this, {exclude: ['foo', /bar/]}));
+		expectType<this>(autoBindReact(this));
+		expectType<this>(autoBindReact(this, {include: ['foo', /bar/]}));
+		expectType<this>(autoBindReact(this, {exclude: ['foo', /bar/]}));
 	}
 }

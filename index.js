@@ -27,8 +27,8 @@ module.exports = (self, {include, exclude} = {}) => {
 
 		return true;
 	};
-
-	for (const [object, key] of getAllProperties(self.constructor.prototype)) {
+	const objectToLookInto = self.constructor.name !== 'Object' && self.constructor.name !== 'Function' ? self.constructor.prototype : self;
+	for (const [object, key] of getAllProperties(objectToLookInto)) {
 		if (key === 'constructor' || !filter(key)) {
 			continue;
 		}

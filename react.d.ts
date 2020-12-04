@@ -1,5 +1,5 @@
 import {Component as ReactComponent} from 'react';
-import autoBind = require('.');
+import autoBind = require('./index');
 
 /**
 Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).

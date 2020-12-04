@@ -1,5 +1,5 @@
 'use strict';
-const autoBind = require('.');
+const autoBind = require('./index');
 
 const excludedReactMethods = [
 	'componentWillMount',

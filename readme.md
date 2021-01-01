@@ -1,4 +1,4 @@
-# auto-bind [![Build Status](https://travis-ci.org/sindresorhus/auto-bind.svg?branch=master)](https://travis-ci.org/sindresorhus/auto-bind)
+# auto-bind
 
 > Automatically bind methods to their class instance
 

@@ -1,25 +1,23 @@
-declare namespace autoBind {
-	interface Options {
-		/**
-		Bind only the given methods.
-		*/
-		readonly include?: ReadonlyArray<string | RegExp>;
+interface Options {
+	/**
+	Bind only the given methods.
+	*/
+	readonly include?: ReadonlyArray<string | RegExp>;
 
-		/**
-		Bind methods except for the given methods.
-		*/
-		readonly exclude?: ReadonlyArray<string | RegExp>;
-	}
+	/**
+	Bind methods except for the given methods.
+	*/
+	readonly exclude?: ReadonlyArray<string | RegExp>;
 }
 
 /**
 Automatically bind methods to their class instance.
 
-@param self - Object with methods to bind.
+@param self - An object with methods to bind.
 
 @example
 ```
-import autoBind = require('auto-bind');
+import autoBind from 'auto-bind';
 
 class Unicorn {
 	constructor(name) {
@@ -46,9 +44,7 @@ message();
 //=> Error: Cannot read property 'name' of undefined
 ```
 */
-declare function autoBind<SelfType extends {[key: string]: any}>(
+export default function autoBind<SelfType extends Record<string, unknown>>(
 	self: SelfType,
-	options?: autoBind.Options
+	options?: Options
 ): SelfType;
-
-export = autoBind;

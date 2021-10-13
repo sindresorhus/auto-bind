@@ -1,6 +1,6 @@
 import test from 'ava';
-import autoBindReact from './react';
-import autoBind from '.';
+import autoBindReact from './react.js';
+import autoBind from './index.js';
 
 test('autoBind()', t => {
 	let bounded;

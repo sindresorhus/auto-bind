@@ -1,6 +1,4 @@
-'use strict';
-
-// Gets all non-builtin properties up the prototype chain
+// Gets all non-builtin properties up the prototype chain.
 const getAllProperties = object => {
 	const properties = new Set();
 
@@ -13,16 +11,16 @@ const getAllProperties = object => {
 	return properties;
 };
 
-module.exports = (self, {include, exclude} = {}) => {
+export default function autoBind(self, {include, exclude} = {}) {
 	const filter = key => {
 		const match = pattern => typeof pattern === 'string' ? key === pattern : pattern.test(key);
 
 		if (include) {
-			return include.some(match);
+			return include.some(match); // eslint-disable-line unicorn/no-array-callback-reference
 		}
 
 		if (exclude) {
-			return !exclude.some(match);
+			return !exclude.some(match); // eslint-disable-line unicorn/no-array-callback-reference
 		}
 
 		return true;
@@ -40,4 +38,4 @@ module.exports = (self, {include, exclude} = {}) => {
 	}
 
 	return self;
-};
+}

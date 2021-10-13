@@ -1,14 +1,14 @@
 import {Component as ReactComponent} from 'react';
-import autoBind = require('.');
+import autoBind, {Options} from './index.js';
 
 /**
-Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
+Same as `autoBind` but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
 
-@param self - Object with methods to bind.
+@param self - An object with methods to bind.
 
 @example
 ```
-import autoBindReact = require('auto-bind/react');
+import autoBindReact from 'auto-bind/react';
 
 class Foo extends React.Component {
 	constructor(props) {
@@ -20,9 +20,7 @@ class Foo extends React.Component {
 }
 ```
 */
-declare function autoBindReact<SelfType extends ReactComponent>(
+export default function autoBindReact<SelfType extends ReactComponent>(
 	self: SelfType,
-	options?: autoBind.Options
+	options?: Options
 ): SelfType;
-
-export = autoBindReact;

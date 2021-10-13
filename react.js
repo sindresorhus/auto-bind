@@ -1,5 +1,4 @@
-'use strict';
-const autoBind = require('.');
+import autoBind from './index.js';
 
 const excludedReactMethods = [
 	'componentWillMount',
@@ -16,14 +15,14 @@ const excludedReactMethods = [
 	'componentWillUnmount',
 	'componentDidCatch',
 	'setState',
-	'forceUpdate'
+	'forceUpdate',
 ];
 
-module.exports = (self, {exclude = [], ...options} = {}) => {
+export default function autoBindReact(self, {exclude = [], ...options} = {}) {
 	options.exclude = [
 		...exclude,
-		...excludedReactMethods
+		...excludedReactMethods,
 	];
 
 	return autoBind(self, options);
-};
+}

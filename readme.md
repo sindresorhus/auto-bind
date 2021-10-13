@@ -6,14 +6,14 @@ It also correctly binds inherited properties.
 
 ## Install
 
-```
-$ npm install auto-bind
+```sh
+npm install auto-bind
 ```
 
 ## Usage
 
 ```js
-const autoBind = require('auto-bind');
+import autoBind from 'auto-bind';
 
 class Unicorn {
 	constructor(name) {
@@ -52,7 +52,7 @@ Returns the `self` object.
 
 Type: `object`
 
-Object with methods to bind.
+An object with methods to bind.
 
 #### options
 
@@ -72,10 +72,10 @@ Bind methods except for the given methods.
 
 ### React
 
-Same as `autoBind`, but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
+Same as `autoBind` but excludes the default [React component methods](https://reactjs.org/docs/react-component.html).
 
 ```js
-const autoBindReact = require('auto-bind/react');
+import autoBindReact from 'auto-bind/react';
 
 class Foo extends React.Component {
 	constructor(props) {

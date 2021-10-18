@@ -1,4 +1,4 @@
-interface Options {
+export interface Options {
 	/**
 	Bind only the given methods.
 	*/
@@ -44,7 +44,7 @@ message();
 //=> Error: Cannot read property 'name' of undefined
 ```
 */
-export default function autoBind<SelfType extends Record<string, unknown>>(
+export default function autoBind<SelfType extends Record<string, any>>( // This has to use `any` to be compatible with classes.
 	self: SelfType,
 	options?: Options
 ): SelfType;

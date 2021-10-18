@@ -15,6 +15,13 @@ expectType<typeof foo>(autoBind(foo));
 expectType<typeof foo>(autoBind(foo, {include: ['foo', /bar/]}));
 expectType<typeof foo>(autoBind(foo, {exclude: ['foo', /bar/]}));
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class, @typescript-eslint/no-unused-vars
+class Foo {
+	constructor() {
+		autoBind(this);
+	}
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 class Bar extends ReactComponent {
 	constructor(props: Record<string, unknown>) {

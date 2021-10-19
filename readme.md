@@ -4,6 +4,8 @@
 
 It also correctly binds inherited properties.
 
+If you're targeting Node.js 12 and later or the browser, you should consider using [class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) instead.
+
 ## Install
 
 ```sh
